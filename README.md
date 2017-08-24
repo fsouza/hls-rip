@@ -1,6 +1,6 @@
 # hls-rip
 
-Tool/hack for ripping HLS playlists. It downloads playlists sequentially and
+Tool/hack for ripping m3u8 playlists. It downloads playlists sequentially and
 segments in parallel. The number of parallel workers can be controlled with the
 ``-w`` flag.
 
