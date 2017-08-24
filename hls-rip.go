@@ -19,10 +19,14 @@ import (
 	"github.com/grafov/m3u8"
 )
 
-var nworkers int
+var (
+	nworkers   int
+	workingDir string
+)
 
 func init() {
 	flag.IntVar(&nworkers, "w", 16, "Number of workers for parallel download of segments")
+	flag.StringVar(&workingDir, "wd", "", "Working dir. Defaults to the current directory")
 }
 
 func main() {
@@ -36,7 +40,10 @@ func main() {
 }
 
 func rip(playlistURL string) error {
-	folderName := getFolderName(playlistURL)
+	folderName, err := getFolderName(playlistURL)
+	if err != nil {
+		return err
+	}
 	return ripPlaylist(playlistURL, folderName)
 }
 
@@ -125,8 +132,7 @@ func download(url, path string) error {
 	return err
 }
 
-func getFolderName(playlistURL string) string {
+func getFolderName(playlistURL string) (string, error) {
 	parts := strings.Split(playlistURL, "/")
-	path, _ := filepath.Abs(parts[len(parts)-2])
-	return path
+	return filepath.Abs(filepath.Join(workingDir, parts[len(parts)-2]))
 }
