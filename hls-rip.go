@@ -51,6 +51,9 @@ func ripPlaylist(url, folder string) error {
 	baseURL, fileName := path.Split(url)
 	filePath := filepath.Join(folder, fileName)
 	err := download(url, filePath)
+	if err != nil {
+		return err
+	}
 
 	f, err := os.Open(filePath)
 	if err != nil {
