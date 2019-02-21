@@ -1,0 +1,6 @@
+language: go
+env:
+  global:
+    - GO111MODULE=on
+install: true
+script: go build
