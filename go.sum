@@ -1,4 +1,2 @@
-github.com/grafov/m3u8 v0.0.0-20190120122058-f845940798f8 h1:7DuVZyjzPtB4MwTRqVRsckKcKGtKUgz6sIHmfZd2mb0=
-github.com/grafov/m3u8 v0.0.0-20190120122058-f845940798f8/go.mod h1:PdjzaU/pJUo4jTIn2rcgMFs+HqBGl/sPJLr8BI0Xq/I=
-github.com/grafov/m3u8 v0.0.0-20190201020831-1e6f30f304fb h1:0Velgx4r6TW6gTVNnNNRz04n31XssSfKHWTtBtVAq44=
-github.com/grafov/m3u8 v0.0.0-20190201020831-1e6f30f304fb/go.mod h1:PdjzaU/pJUo4jTIn2rcgMFs+HqBGl/sPJLr8BI0Xq/I=
+github.com/grafov/m3u8 v0.0.0-20190327220348-94253f1561f8 h1:HRhpDzrriN9N4LlGv2HTGgjOD2ogN0x38IEzCq+orT0=
+github.com/grafov/m3u8 v0.0.0-20190327220348-94253f1561f8/go.mod h1:PdjzaU/pJUo4jTIn2rcgMFs+HqBGl/sPJLr8BI0Xq/I=
