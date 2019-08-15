@@ -1,0 +1,25 @@
+name: Go
+on: [push, pull_request]
+jobs:
+  build:
+    strategy:
+      matrix:
+        go_version: [1.11.13, 1.12.8, 1.13beta1]
+
+    name: Go ${{ matrix.go_version }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-go@v1
+        id: go
+        with:
+          version: ${{ matrix.go_version }}
+
+      - uses: actions/checkout@master
+
+      - name: go-mod-download
+        run: go mod download
+        env:
+          GOPROXY: https://proxy.golang.org
+
+      - name: go-build
+        run: go build -mod readonly
