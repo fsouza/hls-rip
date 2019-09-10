@@ -11,12 +11,12 @@ jobs:
     name: Go ${{ matrix.go_version }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-go@v1
+      - uses: actions/setup-go@v1.0.2
         id: go
         with:
           version: ${{ matrix.go_version }}
 
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v1.0.0
 
       - name: go-mod-download
         run: go mod download
