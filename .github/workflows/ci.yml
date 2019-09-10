@@ -4,7 +4,9 @@ jobs:
   build:
     strategy:
       matrix:
-        go_version: [1.11.13, 1.12.9, 1.13rc1]
+        go_version:
+          - 1.12.x
+          - 1.13.x
 
     name: Go ${{ matrix.go_version }}
     runs-on: ubuntu-latest
