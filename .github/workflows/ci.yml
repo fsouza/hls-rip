@@ -6,6 +6,8 @@ on:
   pull_request:
     branches:
       - master
+  schedule:
+    - cron: "42 2 * * 2"
 jobs:
   build:
     name: Go
