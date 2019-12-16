@@ -20,3 +20,11 @@ enough:
 ```
 % go get github.com/fsouza/hls-rip
 ```
+
+That will install the binary ``hls-rip`` to ``$GOBIN`` (or
+``${GOPATH}/bin``). If you haven't explicitly set the environment variable
+``$GOBIN``, you can access the binary in ``$(go env GOPATH)/bin/hls-rip``.
+
+Additionally, pre-built binaries are provided for Linux x64 and MacOS x64 in
+the releases page, checkout the [latest
+release](https://github.com/fsouza/hls-rip/releases/latest).
