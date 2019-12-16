@@ -2,26 +2,33 @@ name: Go
 on: [push, pull_request]
 jobs:
   build:
-    strategy:
-      matrix:
-        go_version:
-          - 1.12.x
-          - 1.13.x
-
-    name: Go ${{ matrix.go_version }}
+    name: Go
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-go@v1.0.2
         id: go
         with:
-          version: ${{ matrix.go_version }}
+          version: "1.x"
 
       - uses: actions/checkout@v1.0.0
 
-      - name: go-mod-download
-        run: go mod download
+      - name: install deps
+        run: |
+          go mod download
+          (
+            cd /tmp
+            env GO111MODULE=on go get github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+          )
+
+      - name: run-linter
+        run: |
+          $(go env GOPATH)/bin/golangci-lint run
         env:
-          GOPROXY: https://proxy.golang.org
+          GOPROXY: off
+          GOFLAGS: -mod=readonly
 
       - name: go-build
-        run: go build -mod readonly
+        run: go build
+        env:
+          GOPROXY: off
+          GOFLAGS: -mod=readonly
