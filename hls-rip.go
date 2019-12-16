@@ -24,13 +24,11 @@ var (
 	workingDir string
 )
 
-func init() {
+func main() {
 	flag.IntVar(&nworkers, "w", 16, "Number of workers for parallel download of segments")
 	flag.StringVar(&workingDir, "wd", "", "Working dir. Defaults to the current directory")
-}
-
-func main() {
 	flag.Parse()
+
 	for _, arg := range flag.Args() {
 		err := rip(arg)
 		if err != nil {
@@ -87,8 +85,8 @@ func ripSegments(p *m3u8.MediaPlaylist, baseURL, folder string) error {
 	ch := make(chan m3u8.MediaSegment, nworkers)
 	errs := make(chan error, nworkers)
 
+	wg.Add(nworkers)
 	for i := 0; i < nworkers; i++ {
-		wg.Add(1)
 		go func() {
 			defer wg.Done()
 			for seg := range ch {
@@ -117,8 +115,12 @@ func ripSegments(p *m3u8.MediaPlaylist, baseURL, folder string) error {
 
 func download(url, path string) error {
 	dir, _ := filepath.Split(path)
-	os.MkdirAll(dir, 0755)
+	err := os.MkdirAll(dir, 0755)
+	if err != nil {
+		return err
+	}
 
+	//nolint:gosec
 	resp, err := http.Get(url)
 	if err != nil {
 		return err
