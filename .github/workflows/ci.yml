@@ -16,7 +16,7 @@ jobs:
       - uses: fsouza/setup-go@add-gobin
         id: go
         with:
-          version: 1.x
+          version: 1.14
 
       - uses: actions/checkout@v1.0.0
 
