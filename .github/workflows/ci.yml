@@ -13,7 +13,7 @@ jobs:
     name: Go
     runs-on: ubuntu-latest
     steps:
-      - uses: fsouza/setup-go@add-gobin
+      - uses: actions/setup-go@master
         id: go
         with:
           go-version: 1.14
