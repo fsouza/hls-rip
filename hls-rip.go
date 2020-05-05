@@ -72,7 +72,7 @@ func ripPlaylist(url, folder string) error {
 			variantURL := baseURL + "/" + variant.URI
 			err = ripPlaylist(variantURL, folder)
 			if err != nil {
-				return fmt.Errorf("failed to rip variant %q: %s", variant.URI, err)
+				return fmt.Errorf("failed to rip variant %q: %w", variant.URI, err)
 			}
 		}
 	}
