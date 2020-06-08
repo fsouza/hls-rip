@@ -9,7 +9,7 @@ jobs:
         if: github.event.ref_type == 'tag'
 
       - name: fetch tags
-        run: git fetch --tags --prune-tags
+        run: git fetch --tags --prune --prune-tags
 
       - uses: docker://goreleaser/goreleaser
         if: github.event.ref_type == 'tag'
