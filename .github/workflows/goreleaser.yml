@@ -8,10 +8,13 @@ jobs:
       - uses: actions/checkout@v2.2.0
         if: github.event.ref_type == 'tag'
 
+      - name: fetch tags
+        run: git fetch --tags --prune-tags
+
       - uses: docker://goreleaser/goreleaser
         if: github.event.ref_type == 'tag'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: bash
-          args: -c "git fetch --tags && goreleaser release -f .goreleaser.yml"
+          args: -c "goreleaser release -f .goreleaser.yml"
