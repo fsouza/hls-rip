@@ -2,10 +2,10 @@ name: Go
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
   schedule:
     - cron: "42 2 * * 2"
 jobs:
@@ -13,7 +13,7 @@ jobs:
     name: Go
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-go@master
+      - uses: actions/setup-go@v2.0.3
         id: go
         with:
           go-version: 1.14
