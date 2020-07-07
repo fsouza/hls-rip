@@ -120,7 +120,7 @@ func download(url, path string) error {
 		return err
 	}
 
-	//nolint:gosec
+	//nolint:gosec,noctx
 	resp, err := http.Get(url)
 	if err != nil {
 		return err
