@@ -115,7 +115,7 @@ func ripSegments(p *m3u8.MediaPlaylist, baseURL, folder string) error {
 
 func download(url, path string) error {
 	dir, _ := filepath.Split(path)
-	err := os.MkdirAll(dir, 0755)
+	err := os.MkdirAll(dir, 0o755)
 	if err != nil {
 		return err
 	}
