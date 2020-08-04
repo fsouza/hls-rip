@@ -5,4 +5,5 @@ linters:
   enable-all: true
   disable:
     - gochecknoglobals
+    - nlreturn
     - wsl
