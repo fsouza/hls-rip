@@ -10,32 +10,24 @@ on:
     - cron: "42 2 * * 2"
 jobs:
   build:
-    name: Go
+    name: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-go@v2.1.1
         id: go
         with:
-          go-version: 1.14
+          go-version: 1.x
 
       - uses: actions/checkout@v2.3.1
 
-      - name: install deps
-        run: |
-          go mod download
-          (
-            cd /tmp
-            env GO111MODULE=on go get github.com/golangci/golangci-lint/cmd/golangci-lint@latest
-          )
-
-      - name: run-linter
-        run: golangci-lint run
+      - run: go build
         env:
-          GOPROXY: off
           GOFLAGS: -mod=readonly
 
-      - name: go-build
-        run: go build
-        env:
-          GOPROXY: off
-          GOFLAGS: -mod=readonly
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2.3.1
+      - uses: golangci/golangci-lint-action@v2.2.0
