@@ -6,4 +6,5 @@ linters:
   disable:
     - gochecknoglobals
     - nlreturn
+    - wrapcheck
     - wsl
