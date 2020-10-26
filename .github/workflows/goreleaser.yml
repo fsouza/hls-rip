@@ -11,7 +11,8 @@ jobs:
           fetch-depth: 0
 
       - name: fetch tags
-        run: git fetch --tags --prune --prune-tags
+        if: github.event.ref_type == 'tag'
+        run: git fetch --tags --prune --prune-tags --force
 
       - uses: docker://goreleaser/goreleaser
         if: github.event.ref_type == 'tag'
