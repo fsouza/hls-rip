@@ -5,7 +5,7 @@ WORKDIR /code
 ADD  . ./
 RUN  go install
 
-FROM alpine:3.13.0
+FROM alpine:3.13.1
 RUN apk add --no-cache ca-certificates
 COPY --from=build /go/bin/hls-rip /usr/bin/hls-rip
 ENTRYPOINT ["/usr/bin/hls-rip"]
