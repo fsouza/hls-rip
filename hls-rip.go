@@ -67,6 +67,7 @@ func ripPlaylist(url, folder string) error {
 	case m3u8.MEDIA:
 		return ripSegments(playlist.(*m3u8.MediaPlaylist), baseURL, folder)
 	case m3u8.MASTER:
+		//nolint:forcetypeassert
 		master := playlist.(*m3u8.MasterPlaylist)
 		for _, variant := range master.Variants {
 			variantURL := baseURL + "/" + variant.URI
