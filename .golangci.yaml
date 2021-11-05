@@ -11,5 +11,6 @@ linters:
     - maligned
     - nlreturn
     - scopelint
+    - varnamelen
     - wrapcheck
     - wsl
