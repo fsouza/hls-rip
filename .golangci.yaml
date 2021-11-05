@@ -5,7 +5,12 @@ linters:
   enable-all: true
   disable:
     - gochecknoglobals
+    - golint
     - gomnd
+    - interfacer
+    - maligned
     - nlreturn
+    - scopelint
+    - varnamelen
     - wrapcheck
     - wsl
